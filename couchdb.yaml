@@ -1,0 +1,44 @@
+namespace: couchdb
+couchdb:
+  defines: runnable
+  metadata:
+    name: couchdb
+    description: >-
+      Apache CouchDB is an open-source document-oriented NoSQL database that
+      uses JSON to store data, JavaScript as its query language using MapReduce,
+      and HTTP for an API
+    icon: https://couchdb.apache.org/assets/dist/favicon.ico
+  containers:
+    couchdb:
+      build: .
+  services:
+    main-app-port:
+      container: couchdb
+      port: 5984
+      host-port: 5984
+      publish: false
+      protocol: TCP
+      description: Main application runs on this port
+  variables:
+    sm-vsn:
+      env: SM_VSN
+      type: string
+      description: >-
+        Version of SpiderMonkey, Mozilla's Javascript engine, that CouchDB is
+        built with
+      value: '78'
+    couchdb-image:
+      env: COUCHDB_IMAGE
+      type: string
+      description: The Docker image to build CouchDB container from
+      value: '!!!SETME!!!'
+    admin-username:
+      env: ADMIN_USERNAME
+      type: string
+      description: The administrator's username
+      value: '!!!SETME!!!'
+    admin-password:
+      env: ADMIN_PASSWORD
+      type: string
+      description: The administrator's password
+      value: '!!!SETME!!!'

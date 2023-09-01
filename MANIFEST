@@ -1,0 +1,2 @@
+REPO couchdb
+LOAD couchdb.yaml
